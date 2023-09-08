@@ -5,10 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather API by Node</title>
 </head>
+<body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+    body {background-color: #f0f0f1;
+        font-family: 'Poppins', sans-serif;
+    }
+    h1 {text-align: center;
+        margin-top: 5em;
+        color: rgb(126, 158, 199);
+    }
+    fieldset{
+        text-align: center;
+        background-color: snow;
+        border-radius: 0.5em;
+        border: 0.1em solid rgb(194, 202, 213);
+        width: fit-content;
+        height: fit-content;
+        margin:auto;
+    }
+    input{padding: 0.8em;
+        border-radius: 10em;
+        border: 0.1em solid gainsboro;
+        margin: 0.5em;
+        width: 16em;
+        margin-bottom: 5em;
+        margin-top: 3em;
+    }
+    label{
+        margin-left: 1em;
+    }
+    button{padding: 0.5em;
+    border-radius: 10em;
+    border: 0.1em solid gainsboro;
+    margin: 2em;
+    width: 17em;
+    height: 2.9em;
+    }
+    button:hover{
+        background-color: lightsteelblue;
+        color: snow;
+    }
+</style>
+
+<h1>Inquire about temperature by city name. </h1>
+<fieldset>
     <form action="/" method="post">
         <label for="CityName"> City Name: </label>
-        <input id="CityName" type="text" name="CityName" placeholder="Enter the city name">
-        <button type="submit">inquire the weather condition</button>
+        <input id="CityName" type="text" name="CityName" placeholder="Enter the city or country name">
+        <button type="submit">Inquire the weather condition</button>
     </form>
+</fieldset>
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 const https = require("https");
 const express = require("express");
 const BodyParser = require("body-parser");
+const { Script } = require("vm");
 
 const app = express();
 app.use(BodyParser.urlencoded({extended:true}));
@@ -15,23 +16,23 @@ app.post("/", (req, res)=>{
     const city = req.body.CityName;
     const unit = "metric";
     const url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&units="+unit+"&appid="+ApiKey+"";
+    const AutoComplete="https://maps.googleapis.com/maps/api/place/autocomplete/output?input="+city+"&key="+ApiKey+"";
         https.get(url, (response)=>{
             console.log("HTTP response status: "+response.statusCode);
             response.on("data", (data)=>{
             const WeatherData = JSON.parse(data);
-            const name = WeatherData.name
             const temp = WeatherData.main.temp;
             const icon = WeatherData.weather[0].icon;
             const imgURL = "https://openweathermap.org/img/wn/"+icon+"@2x.png"; 
             const des = WeatherData.weather[0].description;
             
-            res.send("<style>h2, table{padding-top:2em; padding-left:1em;} span{font-size:1.5em}</style>"+
-            "<h2>The temperature in "+city+" is "+temp+"</h2>"+
+            res.send("<style>h1{text-align:center; margin-top: 5em; color: #41484f} table{padding-top:2em; padding-left:1em; margin:auto;} span{font-size:1.5em; color:#41484f} body{background-color:#c5d9ed; font-family: 'Poppins', sans-serif;} span2{text-align: center;}</style>"+
+            "<h1>The temperature in <em>"+city+"</em> is <em>"+temp+"</em> <sup>o</sup>c</h1>"+
             "<table><tr><th><img src = "+imgURL+" width=\"120\" height=\"120\"> "+"</th><th><span>"+des+"</span></th></tr></table>");
         })
     })
 })
 
 app.listen(port,()=>{
-    console.log("server is listening on port "+port);
+    console.log(`Server is listening on port ${port}`);
 });
