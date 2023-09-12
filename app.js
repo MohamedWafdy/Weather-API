@@ -33,6 +33,8 @@ app.post("/", (req, res)=>{
     })
 })
 
+module.exports = app
+
 app.listen(port,()=>{
     console.log(`Server is listening on port ${port}`);
 });
